@@ -3,6 +3,7 @@ import UnitForm from "./UnitForm.js"
 import Unit from "./Unit.js"
 import axios from 'axios'
 
+const baseURL = "/api/"
 
 const App = () => {
   
@@ -10,7 +11,7 @@ const App = () => {
 
   const addNewUnit = (newUnit) => {
 
-    axios.post("http://localhost:3001/api/units", newUnit)
+    axios.post("/api/units", newUnit)
     .then(response => {
       console.log("POST response", response)
       setUnits([...units, response.data])
@@ -18,7 +19,7 @@ const App = () => {
   }
 
   const fetchUnits = () => {
-    axios.get("http://localhost:3001/api/units")
+    axios.get("/api/units")
     .then((response) => {
       console.log("response: ", response)
       setUnits(response.data)
@@ -31,7 +32,7 @@ const App = () => {
 
   const deleteUnit = (unit) => {
     console.log("delete", unit)
-    axios.delete("http://localhost:3001/api/units/" + unit.id)
+    axios.delete("/api/units/" + unit.id)
     .then((response) => {
       console.log("delete succeeded")
       // delete local copy
@@ -47,7 +48,7 @@ const App = () => {
 
   const updateUnit = (unit) => {
     console.log("updating unit", unit)
-    axios.put("http://localhost:3001/api/units/" + unit.id, unit)
+    axios.put("/api/units/" + unit.id, unit)
     .then((response) => {
       console.log("RESPONSE", response)
       fetchUnits()

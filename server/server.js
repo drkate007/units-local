@@ -8,7 +8,8 @@ const data = JSON.parse(rawData)
 
 const app = express() 
 app.use(cors())
-app.use(express.json()) 
+//app.use(express.json()) 
+app.use(express.static('build'))
 
 
 app.get('/api/units', (req, res) => {
